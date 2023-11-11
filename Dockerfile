@@ -1,5 +1,5 @@
 # Use the base Artix base image
-FROM artixlinux/openrc
+FROM artixlinux/openrc:lastest
 
 # Update the package repository and install necessary packages
 RUN pacman -Syu --noconfirm \
