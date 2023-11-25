@@ -1,11 +1,14 @@
-# Use the base Artix base image
-FROM artixlinux/openrc:latest
+# Use the Arch Linux base image
+FROM archlinux:base-devel
+# Create a user 'builder' with a home directory
+RUN useradd -m -d /home/builder -s /bin/bash builder
+RUN pacman -Syu --noconfirm
 
-# Update the package repository and install necessary packages
-RUN pacman -Syu --noconfirm \
-    && pacman -S --noconfirm \
-        base-devel \
-    && rm -rf /var/cache/pacman/pkg/*
+# Set the working directory to the user's home directory
+WORKDIR /home/builder
 
-# Set the default command to run OpenRC
-CMD ["/sbin/init"]
+# Grant sudo privileges to the 'builder' user without a password prompt
+RUN echo 'builder ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# Switch to the 'builder' user
+USER builder
