@@ -2,6 +2,8 @@
 FROM archlinux:base-devel
 # Create a user 'builder' with a home directory
 RUN useradd -m -d /home/builder -s /bin/bash builder
+RUN pacman-key --init
+RUN pacman-key --populate
 RUN pacman -Syu --noconfirm
 
 # Set the working directory to the user's home directory
