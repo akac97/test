@@ -10,7 +10,7 @@ jobs:
   container-test-job:
     runs-on: ubuntu-latest
     container:
-      file: Dockerfile
+      image: Dockerfile
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
