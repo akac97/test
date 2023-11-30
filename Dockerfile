@@ -1,10 +1,11 @@
 # Use the Arch Linux base image
-FROM archlinux:base-devel
+FROM artixlinux/openrc:latest
 # Create a user 'builder' with a home directory
 RUN useradd -m -d /home/builder -s /bin/bash builder
 RUN pacman-key --init
 RUN pacman-key --populate
 RUN pacman -Syu --noconfirm
+RUN pacman -S base-devel --noconfirm
 
 # Set the working directory to the user's home directory
 WORKDIR /home/builder
