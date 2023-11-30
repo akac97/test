@@ -1,5 +1,5 @@
 # Use the Arch Linux base image
-FROM artixlinux/openrc:latest
+FROM archlinux:base-devel
 # Create a user 'builder' with a home directory
 RUN useradd -m -d /home/builder -s /bin/bash builder
 RUN pacman-key --init
