@@ -5,6 +5,8 @@ FROM alpine
 RUN adduser -D -h /home/builder -s /bin/bash builder
 
 # Install sudo package
+RUN apk update
+RUN apk upgrade
 RUN apk add --no-cache sudo
 
 # Grant sudo privileges to the 'builder' user without a password prompt
