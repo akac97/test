@@ -1,8 +1,10 @@
 # Use the Arch Linux base image
-FROM archlinux:base-devel
+FROM alpine
 # Create a user 'builder' with a home directory
 RUN useradd -m -d /home/builder -s /bin/bash builder
-RUN pacman -Syu --noconfirm
+RUN apk update -y
+RUN apk upgrade -y
+RUN apk add sudo -y
 
 # Set the working directory to the user's home directory
 WORKDIR /home/builder
